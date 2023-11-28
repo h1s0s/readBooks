@@ -7,7 +7,7 @@
 
 ## 기술 스택
 ### 백엔드
-- Java (jdk17), Spring Boot, Spring JPA, Spring Session, Spring Security, Junit5, RESTful API, Thymeleaf
+- Java (jdk17), Spring Boot, Spring JPA, Spring Session, Spring Security, Spring Batch, Junit5, RESTful API, Thymeleaf
 
 ### 프론트
 - React
