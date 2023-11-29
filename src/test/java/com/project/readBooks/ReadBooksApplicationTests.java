@@ -1,10 +1,10 @@
-package com.project.readerBooks;
+package com.project.readBooks;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ReaderBooksApplicationTests {
+class ReadBooksApplicationTests {
 
 	@Test
 	void contextLoads() {
