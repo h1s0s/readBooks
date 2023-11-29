@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://192.168.65.1:3307/reader_books_database?autoReconnect=true&userSSL=false
+    url: jdbc:mysql://mysql-container:3307/reader_books_database
     username: han
     password: 1234567890
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -13,3 +13,20 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
   thymeleaf:
     cache: false
+logging:
+  level:
+    root: info
+    web: info
+    sql: error
+    org.hibernate: error
+---
+spring:
+  config:
+    activate:
+      on-profile:
+        - dev
+  datasource:
+    url: jdbc:mysql://host.docker.internal:3307/reader_books_database?autoReconnect=true&userSSL=false
+    username: han
+    password: 1234567890
+    driver-class-name: com.mysql.cj.jdbc.Driver
