@@ -26,3 +26,5 @@
 2. 스프링 시큐리티, 스프링 세션, 소셜 로그인 API를 이용한 로그인, 회원가입 기능
 3. Docker 컨테이너 환경 구성
 4. Junit5를 이용해 테스트 코드 작성
+
+<img width="460" alt="스크린샷 2023-11-16 오전 11 37 22" src="https://github.com/h1s0s/readBooks/assets/91957568/c21c37e9-9731-4562-a4ed-4c3cb66d12dd">
