@@ -7,7 +7,7 @@ import lombok.Getter;
 @Data
 @AllArgsConstructor
 public class UserDto {
-    String UserNo;
-    String UserId;
-    String UserPw;
+    private String UserNo;
+    private String UserId;
+    private String UserPw;
 }
