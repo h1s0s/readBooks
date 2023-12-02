@@ -13,11 +13,11 @@ public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String UserNo;
+    private String UserNo;
 
     @Column
-    String UserId;
+    private String id;
 
     @Column
-    String UserPw;
+    private String password;
 }
