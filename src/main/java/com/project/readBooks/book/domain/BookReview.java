@@ -4,14 +4,16 @@ import com.project.readBooks.common.domain.BaseEntity;
 import com.project.readBooks.user.domain.User;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class BookReview extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String reviewNo;
+    private Long reviewNo;
 
     @Column
     private String contents;
@@ -19,10 +21,7 @@ public class BookReview extends BaseEntity {
     @Column
     private Integer score;
 
-    @OneToOne(mappedBy = "userNo", cascade = CascadeType.ALL)
-    private User user;
-
     @ManyToOne
-    @JoinColumn(name = "bookId")
+    @JoinColumn(name = "bookNo")
     private Book book;
 }

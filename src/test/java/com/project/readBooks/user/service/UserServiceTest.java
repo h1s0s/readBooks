@@ -21,7 +21,25 @@ public class UserServiceTest {
     @DisplayName("유저 회원가입 성공")
     public void saveTest(){
         //given
-        UserDto newUser = new UserDto("1", "2", "3");
+        User newUser = new User();
+        newUser.setId("abc");
+        newUser.setPassword("1234");
+
+        //when
+        userRepository.save(newUser);
+
+        //then
+        List<User> results = userRepository.findAll();
+        Assertions.assertThat(results).hasSize(1);
+    }
+
+    @Test
+    @DisplayName("유저 회원정보 수정 성공")
+    public void updateTest(){
+        //given
+        User newUser = new User();
+        newUser.setId("abc");
+        newUser.setPassword("1234");
 
         //when
         userRepository.save(newUser);
