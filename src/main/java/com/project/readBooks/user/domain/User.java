@@ -25,7 +25,7 @@ public class User extends BaseEntity {
     private Long userNo;
 
     @Column
-    private String id;
+    private String userId;
 
     @Column
     private String password;

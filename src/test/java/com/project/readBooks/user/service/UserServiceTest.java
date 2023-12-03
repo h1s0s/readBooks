@@ -1,7 +1,6 @@
 package com.project.readBooks.user.service;
 
 import com.project.readBooks.user.domain.User;
-import com.project.readBooks.user.domain.UserDto;
 import com.project.readBooks.user.domain.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -10,9 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 public class UserServiceTest {
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     UserRepository userRepository;
@@ -22,11 +25,11 @@ public class UserServiceTest {
     public void saveTest(){
         //given
         User newUser = new User();
-        newUser.setId("abc");
+        newUser.setUserId("abc");
         newUser.setPassword("1234");
 
         //when
-        userRepository.save(newUser);
+        userService.createUser(newUser);
 
         //then
         List<User> results = userRepository.findAll();
@@ -38,14 +41,25 @@ public class UserServiceTest {
     public void updateTest(){
         //given
         User newUser = new User();
-        newUser.setId("abc");
+        newUser.setUserId("abc");
         newUser.setPassword("1234");
+        userService.createUser(newUser);
+        Optional<User> optionalUser = userRepository.findByUserId("abc");
 
         //when
-        userRepository.save(newUser);
+        if(optionalUser.isPresent()){
+            User updateUser = optionalUser.get();
+            updateUser.setPassword("4321");
+            userService.updateUser(updateUser);
+        } else {
+            Assertions.fail("User with ID 'abc' not found");
+        }
 
         //then
-        List<User> results = userRepository.findAll();
-        Assertions.assertThat(results).hasSize(1);
+        Optional<User> userOptional = userRepository.findByUserId("abc");
+        userOptional.ifPresentOrElse(
+                user -> Assertions.assertThat(user.getPassword()).isEqualTo("4321"),
+                () -> Assertions.fail("User with ID 'abc' not found")
+        );
     }
 }
